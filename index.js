@@ -1,13 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const app = express();
+const users = require("./routes/users.router");
+
 const port = 3333;
+const app = express();
+
+app.use("/users", users);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
-});
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
 });
