@@ -11,11 +11,17 @@ exports.create = (req, res) => {
 };
 
 exports.read = (req, res) => {
-  // res.send(req.params.id);
   User.findById(req.params.id, (err, user) => {
     if (err) {
       console.warn(`Error reading user ${user}`);
     }
     res.send(`Showing user: ${user}`);
+  });
+};
+
+exports.update = (req, res) => {
+  User.findByIdAndUpdate(req.params.id, { $set: req.body }, (err, user) => {
+    if (err) console.warn("Error updating user");
+    res.send(`Updated successfully ${user}`);
   });
 };
