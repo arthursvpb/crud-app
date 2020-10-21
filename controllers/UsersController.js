@@ -25,3 +25,10 @@ exports.update = (req, res) => {
     res.send(`Updated successfully ${user}`);
   });
 };
+
+exports.delete = (req, res) => {
+  User.findByIdAndRemove(req.params.id, (err, user) => {
+    if (err) console.warn("Error deleting user");
+    res.send(`Deleted successfully ${user}`);
+  });
+};
